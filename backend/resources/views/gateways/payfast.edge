@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payfast Gateway</title>
+  <style>
+    form {
+      display: none;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+    }
+    .loader {
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader"></div>
+  <form method="POST" action="https://{{mode === 'sandbox' ? 'sandbox' : 'www'}}.payfast.co.za/eng/process">
+    <input type="hidden" name="merchant_id" value="{{merchantId}}">
+    <input type="hidden" name="merchant_key" value="{{merchantKey}}">
+    <input type="hidden" name="amount" value="{{amount}}">
+    <input type="hidden" name="item_name" value="{{itemName}}">
+    <input type="hidden" name="return_url" value="{{returnUrl}}">
+    <input type="hidden" name="cancel_url" value="{{cancelUrl}}">
+    <input type="hidden" name="notify_url" value="{{notifyUrl}}">
+    <input type="hidden" name="m_payment_id" value="{{trxId}}">
+
+ 
+    <button id="submitButton" style="display:none;">Submit</button>
+  </form>
+  <script>
+    function autoClickButton() {
+      const button = document.getElementById("submitButton");
+      button.click(); 
+    }
+    autoClickButton();
+  </script>
+</body>
+</html>

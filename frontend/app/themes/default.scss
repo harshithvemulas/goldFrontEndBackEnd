@@ -1,0 +1,90 @@
+@layer base {
+  :root {
+    --body-background: 210 28.57% 97.25%; // #F6F8FA
+    --background: 0 0% 100%; // #FFFFFF
+    --foreground: 0 0% 14.12%; // #242424
+
+    // text
+    --secondary-text: 0 0% 50.2%; // #808080
+
+    --card: 0 0% 100%; // #FFFFFF
+    --card-foreground: 0 0% 14.12%; // #242424
+
+    --popover: 0 0% 100%; // #FFFFFF
+    --popover-foreground: 0 0% 14.12%; // #242424
+
+    --primary-selected: 177, 80%, 90%;
+    --primary-300: 177, 92%, 38%;
+    --primary: 176.75, 98.81%, 32.94%;
+    --primary-500: 177, 100%, 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary-200: 0 0% 82%;
+    --secondary-300: 0 0% 82%;
+    --secondary: 0 0% 96%;
+    --secondary-500: 0 0% 90.2%; // #E6E6E6
+    --secondary-600: 0 0% 64%;
+    --secondary-700: 0 0% 26%;
+    --secondary-800: 0 0% 14%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --gray: 0 0% 60%; // #999999
+    --gray-600: 218 17% 35%; // #4a5568
+
+    --muted: 0 0% 90.2%; // #E6E6E6
+    --muted-foreground: 0 0% 14.12%; // #242424
+
+    --accent: 0 0% 96.08%; // #F5F5F5
+    --accent-foreground: 0 0% 14.12%; // #242424
+
+    --destructive: 10.85 100% 39.02%; // #C72400
+    --destructive-foreground: 0 0% 100%; // #FFFFFF
+
+    // radius
+    --radius: 0.5rem; // 16px
+
+    // input
+    --input: 0 0% 96.08%; // #F5F5F5
+    --input-disabled: 0 0% 90.2%; // #E6E6E6
+    --placeholder: 0 0% 43.92%; // #707070
+
+    // stroke divider and border
+    --ring: 222.2 84% 4.9%;
+    --primary-border: 0 0% 96.08%; // #F5F5F5
+    --border: 0 0% 90.2%; // #E6E6E6
+
+    --divider: 0 0% 96.08%; // #F5F5F5 <- #e0e0e0
+    --divider-secondary: 0 0% 94.12%; // #F0F0F0 //secondary
+
+    --btn-outline-border: 0 0% 90.2%; // #E6E6E6
+
+    // status colors
+    --status-secondary: 0 0% 90.2%; // #E6E6E6
+    --status-secondary-foreground: 0 0% 14.12%; // #242424
+
+    --success: 120 95.65% 27.06%; // #038703
+    --success-foreground: 0 0% 100%; // #FFFFFF
+
+    --warning: 40.94 100% 50; // #FFAE00
+    --warning-foreground: 0 0% 14.12%; // #242424
+
+    --danger: 10.85 100% 39.02%; // #C72400
+    --danger-foreground: 0 0% 100%; // #FFFFFF
+
+    --important: 0 0% 14.12%; // #242424
+    --important-foreground: 0 0% 100%; // #FFFFFF
+
+    --info: 187 100% 42%;
+    --info-foreground: 0 0% 100%;
+
+    // spacial colors
+    --spacial-green: 120 81.2% 22.94%; // #0B6A0B
+    --spacial-green-foreground: 120 38.36% 71.37%; // #9AD29A
+
+    --spacial-blue: 213 100% 23.53%; // #036785
+    --spacial-blue-foreground: 205.48 73.74% 80.59%; // #A9D3F2
+
+    --spacial-red: 0 100% 27.84%; // #8E0000
+    --spacial-red-foreground: 0 100% 84.12%; // #FFAEAE
+  }
+}
