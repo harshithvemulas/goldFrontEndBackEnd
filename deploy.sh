@@ -4,7 +4,7 @@ set -e
 APP_DIR="/var/www/goldApp"
 BACKUP_DIR="/var/www/goldApp_prev"
 
-# Enable logging inside project folder
+# Log inside the app folder
 exec > >(tee -a $APP_DIR/deploy.log) 2>&1
 
 echo "🚀 Starting deployment..."
