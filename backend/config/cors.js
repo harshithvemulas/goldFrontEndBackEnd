@@ -1,7 +1,10 @@
 import { defineConfig } from '@adonisjs/cors';
 const corsConfig = defineConfig({
     enabled: true,
-    origin: true,
+    origin: [
+        'https://goldpe.app',
+        'https://www.goldpe.app',
+    ],
     methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
     headers: true,
     exposeHeaders: [
