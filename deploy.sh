@@ -5,8 +5,8 @@ APP_DIR="/var/www/goldApp"
 
 echo "📦 Pulling latest code..."
 cd $APP_DIR
-git reset --hard
-git pull origin main
+git fetch --all
+git reset --hard origin/main
 
 echo "📂 Backend setup..."
 cd $APP_DIR/backend
@@ -14,7 +14,8 @@ npm install --production
 
 echo "📂 Frontend setup..."
 cd $APP_DIR/frontend
-npm install --production
+# 🚫 Disable husky in CI/CD
+HUSKY=0 npm install --production
 npm run build
 
 echo "🔄 Restarting apps with PM2..."
