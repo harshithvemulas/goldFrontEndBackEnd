@@ -3,9 +3,13 @@ set -e
 
 APP_DIR="/var/www/goldApp"
 BACKUP_DIR="/var/www/goldApp_prev"
+LOG_DIR="/var/www/logs"
+
+# Ensure log dir exists
+mkdir -p $LOG_DIR
 
 # Enable logging
-exec > >(tee -a /var/log/goldapp-deploy.log) 2>&1
+exec > >(tee -a $LOG_DIR/deploy.log) 2>&1
 
 echo "🚀 Starting deployment..."
 
