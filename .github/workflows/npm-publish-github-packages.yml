@@ -19,8 +19,10 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
+          envs: HUSKY
           script: |
+            export HUSKY=0
             cd /var/www/goldApp
             sudo chown -R ubuntu:ubuntu /var/www/goldApp
-            chmod +x deploy.sh            
+            chmod +x deploy.sh
             ./deploy.sh
