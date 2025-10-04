@@ -5,16 +5,9 @@ const corsConfig = defineConfig({
         'https://goldpe.app',
         'https://www.goldpe.app',
     ],
-    methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS'], 
     headers: true,
-    exposeHeaders: [
-        'cache-control',
-        'content-language',
-        'content-type',
-        'expires',
-        'last-modified',
-        'pragma',
-    ],
+    exposeHeaders: ['*'],
     credentials: true,
     maxAge: 90,
 });
