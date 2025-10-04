@@ -3,13 +3,9 @@ set -e
 
 APP_DIR="/var/www/goldApp"
 BACKUP_DIR="/var/www/goldApp_prev"
-LOG_DIR="/var/www/logs"
 
-# Ensure log dir exists
-mkdir -p $LOG_DIR
-
-# Enable logging
-exec > >(tee -a $LOG_DIR/deploy.log) 2>&1
+# Enable logging inside project folder
+exec > >(tee -a $APP_DIR/deploy.log) 2>&1
 
 echo "🚀 Starting deployment..."
 
@@ -17,7 +13,7 @@ echo "🚀 Starting deployment..."
 if [ -d "$APP_DIR" ]; then
   echo "📦 Backing up current version to $BACKUP_DIR..."
   rm -rf $BACKUP_DIR
-  cp -r $APP_DIR $BACKUP_DIR
+  rsync -a --exclude 'node_modules' $APP_DIR/ $BACKUP_DIR/
 fi
 
 # Step 2: Update code
