@@ -4,7 +4,7 @@ import Label from "@/components/ui/label";
 import { getAvatarFallback } from "@/utils/getAvatarFallback";
 import { useTranslation } from "react-i18next";
 
-export function QuickSendItem({
+export default function QuickSendItem({
   id,
   checked = false,
   onSelect,

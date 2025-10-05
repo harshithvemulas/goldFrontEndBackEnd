@@ -46,6 +46,13 @@ export default function LoginPage() {
     { type: "agent", enabled: agentRegistration },
   ];
 
+  const userCredentials = [
+    { type: "Admin", email: "admin@test.com", password: "12345678" },
+    { type: "Customer", email: "customer@test.com", password: "12345678" },
+    { type: "Merchant", email: "merchant@test.com", password: "12345678" },
+    { type: "Agent", email: "agent@test.com", password: "12345678" },
+  ];
+
   const enabledCount = enabledRegistrations.filter((r) => r.enabled).length;
 
   const form = useForm<TLoginFormData>({
@@ -170,6 +177,27 @@ export default function LoginPage() {
               </Case>
             </Button>
           </div>
+          {process.env.NEXT_PUBLIC_DEMO === "true" && (
+            <div className="mb-10 w-full rounded-xl bg-background p-4 shadow-default">
+              <p className="mb-4 text-xs font-normal text-secondary-text">
+                Click to fill in the credentials
+              </p>
+              {userCredentials.map((user) => (
+                <button
+                  key={user.type}
+                  type="button"
+                  onClick={() => {
+                    form.setValue("email", user.email);
+                    form.setValue("password", user.password);
+                  }}
+                  className="mb-2 flex w-full justify-between rounded-lg bg-secondary px-4 py-2 text-left text-sm font-normal hover:bg-secondary/80 md:grid md:grid-cols-3"
+                >
+                  <span className="hidden md:inline">{user.type}</span>{" "}
+                  <span>{user.email}</span> <span>{user.password}</span>
+                </button>
+              ))}
+            </div>
+          )}
         </form>
       </Form>
 

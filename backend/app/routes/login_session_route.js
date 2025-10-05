@@ -4,8 +4,8 @@ import { middleware } from '#start/kernel';
 router
     .group(() => {
     router.get('/', [LoginSessionsController, 'index']);
-    router.put('/remove/:id', [LoginSessionsController, 'deactiveSession']);
-    router.put('/remove-all', [LoginSessionsController, 'deactiveAllSessions']);
+    router.put('/remove/:id', [LoginSessionsController, 'deactiveSession']).use(middleware.demo());
+    router.put('/remove-all', [LoginSessionsController, 'deactiveAllSessions']).use(middleware.demo());
 })
     .prefix('login-sessions')
     .use(middleware.auth({ guards: ['api'] }));

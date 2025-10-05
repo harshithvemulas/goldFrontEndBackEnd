@@ -1,11 +1,9 @@
 "use client";
 
-import { TElectricityBillFormData } from "@/app/(protected)/@customer/services/electricity-bill/page";
 import { Case } from "@/components/common/Case";
 import { Loader } from "@/components/common/Loader";
 import { ReviewItem, ReviewItemList } from "@/components/common/ReviewItems";
 import { TransactionIdRow } from "@/components/common/TransactionIdRow";
-import { Flag } from "@/components/icons/Flag";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -20,7 +18,7 @@ import Separator from "@/components/ui/separator";
 import { toggleBookmark } from "@/data/transaction-history/toggleBookmark";
 import { useSWR } from "@/hooks/useSWR";
 import { useWallets } from "@/hooks/useWallets";
-import cn, { copyContent, Currency, shapePhoneNumber } from "@/lib/utils";
+import cn, { copyContent, Currency } from "@/lib/utils";
 import {
   ArrowRotateRight,
   Danger,
@@ -31,17 +29,12 @@ import {
   Save2,
   TickCircle,
 } from "iconsax-react";
-import { parsePhoneNumber } from "libphonenumber-js";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
-export default function Finish({
-  formData,
-}: {
-  formData: TElectricityBillFormData;
-}) {
+export default function Finish() {
   const { t } = useTranslation();
   const sp = useSearchParams();
   const router = useRouter();
@@ -83,8 +76,6 @@ export default function Finish({
   const wallet = getWalletByCurrencyCode(wallets, sender.currency);
   const currency = new Currency(sender?.currency);
 
-  const phone = parsePhoneNumber(shapePhoneNumber(formData.phone_number ?? ""));
-
   return (
     <div className="mx-auto max-w-3xl">
       <h2 className="mb-1 flex items-center justify-center gap-2 text-2xl font-semibold text-foreground">
@@ -101,31 +92,6 @@ export default function Finish({
           <span>{t("Payment failed")}</span>
         </Case>
       </h2>
-      <Separator orientation="horizontal" className="my-7" />
-      {/* Meter details */}
-
-      <ReviewItemList groupName={t("Meter details")}>
-        <ReviewItem
-          title={t("Phone number")}
-          value={
-            <div className="flex items-center gap-2">
-              <Flag countryCode={phone.country} />
-              {phone.formatInternational()}
-            </div>
-          }
-        />
-
-        <ReviewItem title={t("Electricity name")} value="Electricity 1" />
-        <ReviewItem
-          title={t("Meter type")}
-          value={
-            <Badge className="bg-primary text-primary-foreground">
-              {formData.meter_type}
-            </Badge>
-          }
-        />
-        <ReviewItem title={t("Meter number")} value={formData.meter_number} />
-      </ReviewItemList>
 
       <Separator className="my-8" />
 

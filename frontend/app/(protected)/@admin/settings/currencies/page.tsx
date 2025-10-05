@@ -88,7 +88,7 @@ export default function Currencies() {
             </Button>
           </DrawerTrigger>
 
-          <DrawerContent className="inset-x-auto inset-y-0 bottom-auto left-auto right-0 top-0 m-0 flex h-full w-[95%] flex-col overflow-x-hidden overflow-y-scroll rounded-t-none bg-white px-0 py-8 md:w-[400px]">
+          <DrawerContent className="inset-x-auto inset-y-0 bottom-auto left-auto right-0 top-0 m-0 flex h-full w-[95%] flex-col overflow-hidden rounded-t-none bg-white px-0 py-8 md:w-[400px]">
             <DrawerTitle className="flex items-center gap-4 px-6 text-base font-semibold">
               <DrawerClose asChild>
                 <Button variant="outline" size="icon">
@@ -98,7 +98,7 @@ export default function Currencies() {
               {t("Add Currency")}
             </DrawerTitle>
             <DrawerDescription className="hidden" />
-            <div className="px-6 py-4">
+            <div className="h-full w-full flex-1 overflow-y-auto px-6 py-4">
               <CurrencyForm onMutate={refresh} />
             </div>
           </DrawerContent>

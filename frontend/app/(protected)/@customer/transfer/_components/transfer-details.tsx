@@ -85,7 +85,7 @@ export function TransferDetails({ form, isCheckingUser, onNext }: IProps) {
 
       <div className="flex justify-end">
         <Button
-          type="submit"
+          type="button"
           onClick={onNext}
           className="min-w-48"
           disabled={isCheckingUser}

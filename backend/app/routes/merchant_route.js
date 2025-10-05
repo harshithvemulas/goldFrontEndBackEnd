@@ -8,7 +8,7 @@ router
     router.get('/payment-requests', [MerchantsController, 'indexPaymentRequests']);
     router.get('/export-payment-request', [MerchantsController, 'exportPaymentRequestCSV']);
     router.post('/payment-requests', [MerchantsController, 'requestPayment']);
-    router.put('/update', [MerchantsController, 'update']);
+    router.put('/update', [MerchantsController, 'update']).use(middleware.demo());
     router.put('/generate-api-key', [MerchantsController, 'generateApiKey']);
     router.delete('/delete-api-key', [MerchantsController, 'deleteApiKey']);
     router.get('/webhooks', [MerchantWebhooksController, 'index']);
@@ -34,7 +34,7 @@ router
     router.get('/export-payment-request/:id', [MerchantsController, 'exportPaymentRequestCSV']);
     router.get('/:id', [MerchantsController, 'getById']);
     router.get('/payment-requests/all', [MerchantsController, 'adminIndexPaymentRequests']);
-    router.put('/update/:userId', [MerchantsController, 'update']);
+    router.put('/update/:userId', [MerchantsController, 'update']).use(middleware.demo());
     router.put('/update-fees/:userId', [MerchantsController, 'updateFees']);
     router.put('/toggle-suspend/:id', [MerchantsController, 'toggleSuspendStatus']);
     router.put('/accept/:id', [MerchantsController, 'acceptMerchant']);

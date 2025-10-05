@@ -13,9 +13,9 @@ router
     router.post('/logout', [AuthController, 'logout']).use(middleware.auth({ guards: ['api'] }));
     router
         .post('/change-password', [AuthController, 'changePassword'])
-        .use(middleware.auth({ guards: ['api'] }));
+        .use(middleware.auth({ guards: ['api'] })).use(middleware.demo());
     router.post('/forgot-password', [AuthController, 'forgotPassword']);
-    router.post('/reset-password', [AuthController, 'resetPassword']);
+    router.post('/reset-password', [AuthController, 'resetPassword']).use(middleware.demo());
     router.post('/geo-location', [AuthController, 'getGeoLocation']);
 })
     .prefix('/auth');

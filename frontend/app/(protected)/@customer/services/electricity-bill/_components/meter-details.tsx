@@ -1,5 +1,5 @@
 import MeterProviderList from "@/app/(protected)/@customer/services/electricity-bill/_components/meter-provider-list";
-import { TElectricityBillFormData } from "@/app/(protected)/@customer/services/electricity-bill/page";
+import { SelectWallet } from "@/components/common/form/SelectWallet";
 import { Button } from "@/components/ui/button";
 import { Command, CommandInput } from "@/components/ui/command";
 import {
@@ -14,7 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { TElectricityBillFormData } from "@/schema/electricity-bill-schema";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import Link from "next/link";
 import React from "react";
@@ -79,52 +79,6 @@ export default function MeterDetails({
       </div>
 
       <div>
-        <h2 className="mb-4 font-semibold">{t("Meter Type")}</h2>
-        <FormField
-          name="meter_type"
-          control={form.control}
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <RadioGroup
-                  defaultValue={field.value}
-                  className="flex w-full max-w-[500px] flex-col items-center gap-4 sm:flex-row"
-                  onValueChange={field.onChange}
-                >
-                  <FormItem
-                    data-active={field.value === "prepaid"}
-                    className="relative flex h-[52px] w-full items-center rounded-xl border-2 border-border bg-muted px-3 text-sm font-semibold leading-5 data-[active=true]:border-primary data-[active=true]:bg-primary-selected"
-                  >
-                    <span>{t("Prepaid")}</span>
-                    <FormControl>
-                      <RadioGroupItem
-                        value="prepaid"
-                        className="absolute inset-0 left-0 top-0 z-10 h-full w-full opacity-0"
-                      />
-                    </FormControl>
-                  </FormItem>
-
-                  <FormItem
-                    data-active={field.value === "postpaid"}
-                    className="relative flex h-[52px] w-full items-center rounded-xl border-2 border-border bg-muted px-3 text-sm font-semibold leading-5 data-[active=true]:border-primary data-[active=true]:bg-primary-selected"
-                  >
-                    <span>{t("Postpaid")}</span>
-                    <FormControl>
-                      <RadioGroupItem
-                        value="postpaid"
-                        className="absolute inset-0 left-0 top-0 z-10 h-full w-full opacity-0"
-                      />
-                    </FormControl>
-                  </FormItem>
-                </RadioGroup>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </div>
-
-      <div>
         <h2 className="mb-4 font-semibold">{t("Meter Number")}</h2>
         <FormField
           name="meter_number"
@@ -133,6 +87,42 @@ export default function MeterDetails({
             <FormItem>
               <FormControl>
                 <Input placeholder={t("Enter meter number")} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <div>
+        <h2 className="mb-4">{t("How much is the bill?")}</h2>
+        <FormField
+          control={form.control}
+          name="bill_amount"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  placeholder={t("Enter payment amount")}
+                  {...field}
+                  type="number"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </div>
+
+      <div>
+        <h2 className="mb-4">{t("Select wallet")}</h2>
+        <FormField
+          name="sender_wallet_id"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <SelectWallet {...field} value={field.value || ""} />
               </FormControl>
               <FormMessage />
             </FormItem>

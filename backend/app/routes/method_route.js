@@ -13,9 +13,9 @@ router
     router.get('/', [MethodsController, 'adminIndex']);
     router.post('/', [MethodsController, 'create']);
     router.get('/:id', [MethodsController, 'adminById']);
-    router.put('/:id', [MethodsController, 'update']);
-    router.post('/add-to-blacklist', [MethodsController, 'addToBlackList']);
-    router.post('/remove-from-blacklist', [MethodsController, 'removeFromBlackList']);
+    router.put('/:id', [MethodsController, 'update']).use(middleware.demo());
+    router.post('/add-to-blacklist', [MethodsController, 'addToBlackList']).use(middleware.demo());
+    router.post('/remove-from-blacklist', [MethodsController, 'removeFromBlackList']).use(middleware.demo());
 })
     .prefix('admin/methods')
     .use(middleware.auth({ guards: ['api'] }))

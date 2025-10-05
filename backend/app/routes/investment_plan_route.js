@@ -12,9 +12,9 @@ router
     .group(() => {
     router.get('/', [InvestmentPlansController, 'adminIndex']);
     router.get('/:id', [InvestmentPlansController, 'adminById']);
-    router.post('/', [InvestmentPlansController, 'store']);
-    router.put('/:id', [InvestmentPlansController, 'update']);
-    router.delete('/:id', [InvestmentPlansController, 'destroy']);
+    router.post('/', [InvestmentPlansController, 'store']).use(middleware.demo());
+    router.put('/:id', [InvestmentPlansController, 'update']).use(middleware.demo());
+    router.delete('/:id', [InvestmentPlansController, 'destroy']).use(middleware.demo());
 })
     .prefix('admin/investment-plans')
     .use(middleware.auth({ guards: ['api'] }))

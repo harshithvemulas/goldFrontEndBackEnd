@@ -43,8 +43,14 @@ export function LangSwitcher({
   }, [i18n, lang]);
 
   const appLangs = [
-    { name: "English", code: "en" },
-    { name: "French", code: "fr" },
+    { code: "en", name: "English" },
+    { code: "es", name: "Español" },
+    { code: "fr", name: "French" },
+    { code: "de", name: "Deutsch" },
+    { code: "ru", name: "Russian" },
+    { code: "pt", name: "Portuguese" },
+    { code: "cn", name: "Chinese" },
+    { code: "ar", name: "Arabic" },
   ];
 
   const switchLang = (lang: string) => {

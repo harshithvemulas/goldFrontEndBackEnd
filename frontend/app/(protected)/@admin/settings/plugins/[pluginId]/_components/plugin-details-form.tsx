@@ -80,7 +80,7 @@ export function PluginDetailsForm({ plugin, onMutate }: any) {
       form.reset(defaultValues);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading, formFields, plugin]);
+  }, [isLoading]);
 
   // update agent info data
   const onSubmit = (values: TFormData) => {

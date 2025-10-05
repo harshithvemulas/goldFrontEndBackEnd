@@ -7,7 +7,7 @@ export async function pinWalletDashboard(params: {
 }) {
   try {
     const response = await axios.put(
-      `wallets/pin-dashboard/${params.walletId}`,
+      `/wallets/pin-dashboard/${params.walletId}`,
       params,
     );
     return ResponseGenerator(response);

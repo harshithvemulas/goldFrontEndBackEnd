@@ -21,6 +21,7 @@ export default class DeviceLoginNotification extends BaseMail {
         this.message.htmlView('emails/generic_email', {
             logo: this.logo,
             title: this.subject,
+            siteName: this.branding?.siteName,
             body: `<h1>Hello ${this.user?.customer?.firstName},</h1>
     <br>
     <p>We noticed a login to your account from a new device:</p>

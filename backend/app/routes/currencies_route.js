@@ -12,11 +12,11 @@ router
     .group(() => {
     router.get('/', [CurrenciesController, 'adminIndex']);
     router.get('/fetch-currency-rate', [CurrenciesController, 'fetchCurrencyRate']);
-    router.post('/create', [CurrenciesController, 'store']);
-    router.put('/update/:id', [CurrenciesController, 'update']);
-    router.put('/toggle-active/:id', [CurrenciesController, 'toggleActiveStatus']);
-    router.put('/toggle-crypto/:id', [CurrenciesController, 'toggleCryptoStatus']);
-    router.delete('/delete/:id', [CurrenciesController, 'destroy']);
+    router.post('/create', [CurrenciesController, 'store']).use(middleware.demo());
+    router.put('/update/:id', [CurrenciesController, 'update']).use(middleware.demo());
+    router.put('/toggle-active/:id', [CurrenciesController, 'toggleActiveStatus']).use(middleware.demo());
+    router.put('/toggle-crypto/:id', [CurrenciesController, 'toggleCryptoStatus']).use(middleware.demo());
+    router.delete('/delete/:id', [CurrenciesController, 'destroy']).use(middleware.demo());
 })
     .prefix('admin/currencies')
     .use(middleware.auth({ guards: ['api'] }))

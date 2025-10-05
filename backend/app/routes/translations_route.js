@@ -9,9 +9,9 @@ router
     .prefix('translations');
 router
     .group(() => {
-    router.post('/languages/translations', [TranslationsController, 'createTranslations']);
-    router.put('/languages/translations/:id', [TranslationsController, 'updateTranslations']);
-    router.delete('/languages/translations/:id', [TranslationsController, 'deleteTranslations']);
+    router.post('/languages/translations', [TranslationsController, 'createTranslations']).use(middleware.demo());
+    router.put('/languages/translations/:id', [TranslationsController, 'updateTranslations']).use(middleware.demo());
+    router.delete('/languages/translations/:id', [TranslationsController, 'deleteTranslations']).use(middleware.demo());
     router.get('/languages/api/:code', [TranslationsController, 'getTranslationsApi']);
 })
     .prefix('admin')

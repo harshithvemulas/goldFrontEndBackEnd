@@ -21,12 +21,12 @@ router
     router.put('/edit-admin/:id', [UsersController, 'updateAdmin']);
     router.post('/send-email/:id', [UsersController, 'sendEmail']);
     router.post('/send-bulk-email/', [UsersController, 'sendBulkEmail']);
-    router.put('/permission/:id', [UsersController, 'updateUserPermission']);
-    router.put('/transfer-limit/:id', [UsersController, 'updateTransferLimit']);
-    router.put('/toggle-active/:id', [UsersController, 'toggleActiveStatus']);
+    router.put('/permission/:id', [UsersController, 'updateUserPermission']).use(middleware.demo());
+    router.put('/transfer-limit/:id', [UsersController, 'updateTransferLimit']).use(middleware.demo());
+    router.put('/toggle-active/:id', [UsersController, 'toggleActiveStatus']).use(middleware.demo());
     router.post('/add-balance', [UsersController, 'addBalanceToWallet']);
     router.post('/remove-balance', [UsersController, 'removeBalanceFromWallet']);
-    router.delete('/:id', [UsersController, 'delete']);
+    router.delete('/:id', [UsersController, 'delete']).use(middleware.demo());
 })
     .prefix('admin/users')
     .use(middleware.auth({ guards: ['api'] }))

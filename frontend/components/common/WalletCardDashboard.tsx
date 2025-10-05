@@ -56,7 +56,7 @@ export function WalletCardDashboard({
 
   return (
     currency && (
-      <Card className="w-[350px] overflow-hidden rounded-2xl border-primary bg-gradient-to-b from-[#48E1D8] to-primary">
+      <Card className="w-full overflow-hidden rounded-2xl border-primary bg-gradient-to-b from-[#48E1D8] to-primary md:w-[350px]">
         <CardContent className="relative overflow-hidden px-6 py-4">
           <h2 className="text-shadow pointer-events-none absolute bottom-3 right-0 text-[104px] font-bold text-primary opacity-30">
             {currency}

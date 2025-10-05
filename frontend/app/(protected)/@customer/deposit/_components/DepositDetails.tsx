@@ -22,41 +22,6 @@ interface IProps {
 export function DepositDetails({ form, onNext }: IProps) {
   const { t } = useTranslation();
 
-  // handle validation of this page before onNext call
-  const handleOnNextValidation = () => {
-    // count error
-    let errorCount = 0;
-
-    // check if wallet is selected
-    if (!form.getValues("wallet")) {
-      form.setError(
-        "wallet",
-        {
-          message: "Please select a wallet.",
-          type: "custom",
-        },
-        { shouldFocus: true },
-      );
-      errorCount += 1;
-    }
-
-    if (!form.getValues("amount")) {
-      form.setError(
-        "amount",
-        {
-          message: "Amount is required.",
-          type: "custom",
-        },
-        { shouldFocus: true },
-      );
-      errorCount += 1;
-    }
-
-    if (!errorCount) {
-      onNext();
-    }
-  };
-
   return (
     <div className="flex flex-col gap-y-4 md:gap-y-8">
       {/* Wallet */}
@@ -106,11 +71,7 @@ export function DepositDetails({ form, onNext }: IProps) {
 
       {/* Action button */}
       <div className="flex justify-end">
-        <Button
-          type="submit"
-          onClick={handleOnNextValidation}
-          className="min-w-48"
-        >
+        <Button type="submit" onClick={onNext} className="min-w-48">
           <span>{t("Next")}</span>
           <ArrowRight2 size={16} />
         </Button>

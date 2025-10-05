@@ -13,9 +13,9 @@ router
     router.get('/', [GatewaysController, 'adminIndex']);
     router.get('/config', [GatewaysController, 'gatewayConfig']);
     router.get('/:id', [GatewaysController, 'adminById']);
-    router.put('/:id', [GatewaysController, 'update']);
-    router.post('/add-to-blacklist', [GatewaysController, 'addToBlackList']);
-    router.post('/remove-from-blacklist', [GatewaysController, 'removeFromBlackList']);
+    router.put('/:id', [GatewaysController, 'update']).use(middleware.demo());
+    router.post('/add-to-blacklist', [GatewaysController, 'addToBlackList']).use(middleware.demo());
+    router.post('/remove-from-blacklist', [GatewaysController, 'removeFromBlackList']).use(middleware.demo());
 })
     .prefix('admin/gateways')
     .use(middleware.auth({ guards: ['api'] }))

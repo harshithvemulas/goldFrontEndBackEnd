@@ -21,6 +21,7 @@ export default class ReferralBonusNotification extends BaseMail {
         this.message.htmlView('emails/generic_email', {
             logo: this.logo,
             title: this.subject,
+            siteName: this.branding?.siteName,
             body: `<h1>Hello ${this.user?.customer?.firstName},</h1>
     <p>You have received a referral bonus: </p>
     <p>- Amount: <b>${this.data?.amount}<b></p>

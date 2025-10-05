@@ -6,8 +6,8 @@ router
     router.get('/referred-users', [CustomersController, 'getReferralUsers']);
     router.get('/referred-by-user', [CustomersController, 'getReferralUser']);
     router.get('/detail', [CustomersController, 'getDetail']);
-    router.put('/update', [CustomersController, 'update']);
-    router.put('/update-address', [CustomersController, 'updateAddress']);
+    router.put('/update', [CustomersController, 'update']).use(middleware.demo());
+    router.put('/update-address', [CustomersController, 'updateAddress']).use(middleware.demo());
 })
     .prefix('customers')
     .use(middleware.auth({ guards: ['api'] }));
@@ -16,9 +16,9 @@ router
     router.get('/', [CustomersController, 'index']);
     router.get('/export/all', [CustomersController, 'exportCSV']);
     router.get('/:id', [CustomersController, 'getById']);
-    router.put('/update/:id', [CustomersController, 'update']);
-    router.put('/update-address/:id', [CustomersController, 'updateAddress']);
-    router.put('/convert-account/:id', [CustomersController, 'convertAccount']);
+    router.put('/update/:id', [CustomersController, 'update']).use(middleware.demo());
+    router.put('/update-address/:id', [CustomersController, 'updateAddress']).use(middleware.demo());
+    router.put('/convert-account/:id', [CustomersController, 'convertAccount']).use(middleware.demo());
 })
     .prefix('admin/customers')
     .use(middleware.auth({ guards: ['api'] }))

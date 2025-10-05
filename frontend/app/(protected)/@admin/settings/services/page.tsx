@@ -110,6 +110,12 @@ export default function ServicesSettings() {
       label: t("Virtual Card"),
       switchable: true,
     },
+    {
+      name: "investment",
+      label: t("Investment"),
+      switchable: true,
+      feeDisable: true,
+    },
   ];
 
   const getFieldValue = (key: string, valueType: string) => {

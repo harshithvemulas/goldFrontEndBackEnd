@@ -62,7 +62,7 @@ export default function TwoFactorVerification() {
   const form = useForm<TFormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      otp: "",
+      otp: process.env.NEXT_PUBLIC_DEMO === "true" ? "1111" : "",
       fingerprint: "",
       isRememberMe: false,
       token: searchParams.get("token") ?? "",

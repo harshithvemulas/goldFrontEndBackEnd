@@ -23,6 +23,7 @@ export default class PaymentRequestNotification extends BaseMail {
         this.message.htmlView('emails/generic_email', {
             logo: this.logo,
             title: this.subject,
+            siteName: this.branding?.siteName,
             body: `<p>Hello ${this?.data?.customerName},</p>
     <br>
     <p><b>${this?.merchant?.name}</b> request a payment from you. Click the below "Pay Now" button to complete the payment. Payment details: </p>

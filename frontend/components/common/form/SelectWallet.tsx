@@ -21,17 +21,6 @@ export const SelectWallet = forwardRef<HTMLDivElement, IProps>(
     const { t } = useTranslation();
     const [isExpanded, setIsExpanded] = React.useState(false);
     const { wallets, isLoading } = useWallets();
-    const watchWallets = React.useMemo(() => wallets, [wallets]);
-
-    // set default wallet selected if wallet id is not provided by manually
-    React.useEffect(() => {
-      const wallet = watchWallets.find((w: IWallet) => w.defaultStatus);
-
-      if (wallet && !value) {
-        onChange(wallet?.currency.code);
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [watchWallets]);
 
     if (isLoading) {
       return (

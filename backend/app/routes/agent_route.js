@@ -4,7 +4,8 @@ import { middleware } from '#start/kernel';
 router
     .group(() => {
     router.get('/detail', [AgentsController, 'getDetail']);
-    router.put('/update', [AgentsController, 'updateProfile']);
+    router.put('/update', [AgentsController, 'updateProfile']).use(middleware.demo());
+    ;
 })
     .prefix('agents')
     .use(middleware.auth({ guards: ['api'] }))
@@ -21,8 +22,8 @@ router
     router.get('/', [AgentsController, 'index']);
     router.get('/export/all', [AgentsController, 'exportCSV']);
     router.get('/:id', [AgentsController, 'getById']);
-    router.put('/update/:userId', [AgentsController, 'updateProfile']);
-    router.put('/update-fees-commissions/:userId', [AgentsController, 'updateFeesCommissions']);
+    router.put('/update/:userId', [AgentsController, 'updateProfile']).use(middleware.demo());
+    router.put('/update-fees-commissions/:userId', [AgentsController, 'updateFeesCommissions']).use(middleware.demo());
     router.put('/update-status/:userId', [AgentsController, 'updateStatus']);
     router.put('/toggle-suspend/:id', [AgentsController, 'toggleSuspendStatus']);
     router.put('/toggle-recommend/:id', [AgentsController, 'toggleRecommendStatus']);

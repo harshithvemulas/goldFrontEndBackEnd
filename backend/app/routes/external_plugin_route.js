@@ -12,7 +12,7 @@ router
     router.get('/', [ExternalPluginsController, 'adminIndex']);
     router.get('/config', [ExternalPluginsController, 'pluginConfig']);
     router.get('/:id', [ExternalPluginsController, 'adminById']);
-    router.put('/:id', [ExternalPluginsController, 'update']);
+    router.put('/:id', [ExternalPluginsController, 'update']).use(middleware.demo());
 })
     .prefix('admin/external-plugins')
     .use(middleware.auth({ guards: ['api'] }))

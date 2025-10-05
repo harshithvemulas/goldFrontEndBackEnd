@@ -21,6 +21,7 @@ export default class SendOtpNotification extends BaseMail {
         this.message.htmlView('emails/generic_email', {
             logo: this.logo,
             title: this.subject,
+            siteName: this.branding?.siteName,
             body: `Hello, <br/>Your OTP code is <b>${this.otp}</b>.<br/>Thanks.`,
             action: false,
             actionText: '',

@@ -14,12 +14,7 @@ const exchangeCalculations = async (from, to, amountFrom, userId, exRate) => {
         if (fromPriceUsd <= 0 || toPriceUsd <= 0) {
             return null;
         }
-        const cryptoCondition = currencyTo.isCrypto || currencyFrom.isCrypto;
-        const exchangeRate = exRate
-            ? exRate
-            : cryptoCondition
-                ? fromPriceUsd / toPriceUsd
-                : toPriceUsd / fromPriceUsd;
+        const exchangeRate = exRate ? exRate : toPriceUsd / fromPriceUsd;
         const user = await User.query()
             .where('id', userId)
             .preload('customer')

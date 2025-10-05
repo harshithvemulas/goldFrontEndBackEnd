@@ -1,4 +1,3 @@
-import { TElectricityBillFormData } from "@/app/(protected)/@customer/services/electricity-bill/page";
 import { Case } from "@/components/common/Case";
 import { Loader } from "@/components/common/Loader";
 import { ReviewItem, ReviewItemList } from "@/components/common/ReviewItems";
@@ -8,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import { previewElectricityBill } from "@/data/services/electricity-bill";
 import { useWallets } from "@/hooks/useWallets";
-import { startCase } from "@/lib/utils";
+import { TElectricityBillFormData } from "@/schema/electricity-bill-schema";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -92,15 +91,7 @@ export default function Review({
           <ReviewItemList groupName={t("Meter details")}>
             <ReviewItem
               title={t("Electricity name")}
-              value={previewData?.receiver?.name}
-            />
-            <ReviewItem
-              title={t("Meter type")}
-              value={
-                <Badge className="bg-primary text-primary-foreground">
-                  {startCase(formData?.meter_type)}
-                </Badge>
-              }
+              value={previewData?.receiver?.name || "N/A"}
             />
 
             <ReviewItem
@@ -115,7 +106,7 @@ export default function Review({
           <ReviewItemList groupName={t("Payment details")}>
             <ReviewItem
               title={t("Amount")}
-              value={`${previewData?.sender?.sendingAmount} ${formData.sender_wallet_id}`}
+              value={`${previewData?.sender?.sendingAmount || "0"} ${formData.sender_wallet_id}`}
             />
             <ReviewItem
               title={t("Service charge")}
@@ -127,7 +118,8 @@ export default function Review({
                     </Badge>
                   </Case>
                   <Case condition={meterProvider?.localTransactionFee !== 0}>
-                    {previewData?.sender?.fee} {formData.sender_wallet_id}
+                    {previewData?.sender?.fee || "0"}{" "}
+                    {formData.sender_wallet_id}
                   </Case>
                 </>
               }
@@ -135,11 +127,11 @@ export default function Review({
 
             <ReviewItem
               title={t("Total")}
-              value={`${Number(previewData?.sender?.receivingAmount)} ${formData.sender_wallet_id}`}
+              value={`${Number(previewData?.sender?.receivingAmount || "0")} ${formData.sender_wallet_id}`}
             />
             <ReviewItem
               title={t("You will get")}
-              value={`${Number(previewData?.receiver?.fxRate)} ${previewData?.receiver?.currencyCode}`}
+              value={`${Number(previewData?.receiver?.fxRate || "0")} ${previewData?.receiver?.currencyCode || ""}`}
             />
           </ReviewItemList>
         </>
@@ -153,7 +145,10 @@ export default function Review({
           {t("Back")}
         </Button>
 
-        <Button onClick={onNext} disabled={isLoading}>
+        <Button
+          onClick={onNext}
+          disabled={isLoading || !previewData?.sender?.sendingAmount}
+        >
           <Case condition={!isLoading}>
             {t("Pay bill")}
             <ArrowRight2 size={17} />

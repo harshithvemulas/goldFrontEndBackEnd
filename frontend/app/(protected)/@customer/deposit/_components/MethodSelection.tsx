@@ -5,7 +5,12 @@ import { Loader } from "@/components/common/Loader";
 import AgentIcon from "@/components/icons/AgentIcon";
 import { Flag } from "@/components/icons/Flag";
 import { Button } from "@/components/ui/button";
-import { FormControl, FormField, FormItem } from "@/components/ui/form";
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import Label from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Separator from "@/components/ui/separator";
@@ -37,6 +42,7 @@ export function MethodSelection({
   const { t } = useTranslation();
   const { getCountryByCode } = useCountries();
   const countryCode = form.getValues("country");
+  const isAgent = form.getValues("isAgent");
   const [country, setCountry] = useState<Country | null>();
   const [showAgentSelectionMenu, setShowAgentSelectionMenu] = useState(false);
 
@@ -155,6 +161,7 @@ export function MethodSelection({
                   </Case>
                 </RadioGroup>
               </FormControl>
+              {!isAgent && <FormMessage />}
             </FormItem>
           )}
         />
@@ -181,7 +188,7 @@ export function MethodSelection({
             <ArrowLeft2 size={16} />
             <span>{t("Back")}</span>
           </Button>
-          <Button type="submit" onClick={onNext} className="min-w-48">
+          <Button type="button" onClick={onNext} className="min-w-48">
             <span>{t("Next")}</span>
             <ArrowRight2 size={16} />
           </Button>

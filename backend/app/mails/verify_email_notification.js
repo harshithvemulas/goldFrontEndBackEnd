@@ -23,6 +23,7 @@ export default class VerifyEmailNotification extends BaseMail {
         this.message.htmlView('emails/generic_email', {
             logo: this.logo,
             title: this.subject,
+            siteName: this.branding?.siteName,
             body: `<h1>Hello ${this.user?.customer?.firstName},</h1>
     <p>Please click the link below to verify your email address:</p>
     <p>Thanks.</p>`,

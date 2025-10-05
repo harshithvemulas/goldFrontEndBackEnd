@@ -165,8 +165,8 @@ export function WalletCard({
                         <Heart size={20} />
                       )}
                       <span className="ml-1">
-                        {isPinnedDashboard ? t("Unpin") : t("Pin")}{" "}
-                        {t("from dashboard")}
+                        {isPinnedDashboard ? t("Unpin from") : t("Pin to")}{" "}
+                        {t("dashboard")}
                       </span>
                     </CommandItem>
 

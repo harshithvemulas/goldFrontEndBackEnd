@@ -18,5 +18,6 @@ export default await Env.create(new URL('../', import.meta.url), {
     SMTP_PASSWORD: Env.schema.string(),
     DRIVE_DISK: Env.schema.enum(['fs']),
     DEMO_OTP: Env.schema.boolean.optional(),
+    DEMO_MODE: Env.schema.string(),
 });
 //# sourceMappingURL=env.js.map

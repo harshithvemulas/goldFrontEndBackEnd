@@ -70,7 +70,7 @@ export function PaymentMethod({ form, updateTab, onBack }: IProps) {
 
           {/* Action button */}
           <div className="mt-8 flex justify-end">
-            <Button type="submit" onClick={onContinue} className="min-w-48">
+            <Button type="button" onClick={onContinue} className="min-w-48">
               <span>{t("Next")}</span>
               <ArrowRight2 size={16} />
             </Button>

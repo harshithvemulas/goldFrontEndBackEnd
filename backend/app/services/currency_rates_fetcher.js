@@ -12,9 +12,14 @@ const currencyRatesFetcher = async () => {
         const filteredDataCrypto = data.filter((coin) => coin.usdRate && coin.isCrypto);
         const filteredDataFiat = data.filter((coin) => coin.usdRate && !coin.isCrypto);
         for (const coin of filteredDataCrypto) {
-            const c = JSON.parse(coin.metaData);
-            const { data: cryptoData } = await axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=${c.id}&vs_currencies=usd`);
-            await coin.merge({ usdRate: cryptoData[c.id].usd }).save();
+            const { data: cryptoData } = await axios.get('https://api.currencyapi.com/v3/latest', {
+                params: {
+                    base_currency: 'USD',
+                    currencies: coin.code.toUpperCase(),
+                    apikey: setting?.apiKey,
+                },
+            });
+            await coin.merge({ usdRate: cryptoData?.data?.[coin.code.toUpperCase()]['value'] }).save();
         }
         for (const coin of filteredDataFiat) {
             const { data: fiatData, headers } = await axios.get('https://api.currencyapi.com/v3/latest', {
@@ -37,6 +42,7 @@ const currencyRatesFetcher = async () => {
         }
     }
     catch (error) {
+        console.log(error?.response?.data);
         console.error('Error fetching currency rates:', error?.response?.data?.message);
     }
 };

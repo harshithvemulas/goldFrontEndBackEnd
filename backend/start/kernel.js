@@ -13,6 +13,7 @@ router.use([
     () => import('@adonisjs/auth/initialize_auth_middleware'),
 ]);
 export const middleware = router.named({
+    demo: () => import('#middleware/demo_middleware'),
     mapi: () => import('#middleware/mapi_middleware'),
     guest: () => import('#middleware/guest_middleware'),
     auth: () => import('#middleware/auth_middleware'),

@@ -143,6 +143,8 @@ export default function SideNav({
               icon: <Tree size="20" />,
               link: "/investments",
               isLoading,
+              isActive: settings?.investment?.status === "on",
+              visible: settings?.investment?.status === "on",
             },
           ]}
         />

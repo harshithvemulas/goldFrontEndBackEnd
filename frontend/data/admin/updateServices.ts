@@ -10,7 +10,10 @@ type TFormData = {
 
 export async function updateServices(formData: TFormData): Promise<ReturnType> {
   try {
-    const response = await axios.post("/admin/settings", formData);
+    const response = await axios.post("/admin/settings", {
+      ...formData,
+      value2: formData.key === "investment" ? undefined : formData.value2,
+    });
     return ResponseGenerator(response);
   } catch (error) {
     return ErrorResponseGenerator(error);

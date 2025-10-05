@@ -159,10 +159,6 @@ export default function Deposit() {
     updateToComplete("review");
   };
 
-  const onError = () => {
-    toast.error(t("Something went wrong."));
-  };
-
   // if user has no access this feature
   if (!auth?.canMakeDeposit()) {
     return <PageDisabledAlert className="flex-1 p-10" />;
@@ -182,24 +178,23 @@ export default function Deposit() {
                 <StepsContent value="amount">
                   <DepositDetails
                     form={form}
-                    onNext={() => {
+                    onNext={form.handleSubmit((_, event: any) => {
+                      event?.preventDefault();
                       setActiveTab("payment_method");
                       updateToComplete("amount");
-                    }}
+                    })}
                   />
                 </StepsContent>
                 <StepsContent value="payment_method">
                   <PaymentMethod
                     form={form}
                     updateTab={() => {
-                      if (form.getValues("isAgent")) {
-                        if (!form.getValues("method")) {
-                          form.setError("method", {
-                            message: t("Select a method to continue."),
-                            type: "required",
-                          });
-                          return;
-                        }
+                      if (!form.getValues("method")) {
+                        form.setError("method", {
+                          message: t("Select a method to continue."),
+                          type: "required",
+                        });
+                        return;
                       }
 
                       setActiveTab("review");
@@ -213,7 +208,7 @@ export default function Deposit() {
                     formData={form.getValues()}
                     isLoading={isPending}
                     onBack={() => setActiveTab("payment_method")}
-                    onNext={form.handleSubmit(onSubmit, onError)}
+                    onNext={form.handleSubmit(onSubmit)}
                   />
                 </StepsContent>
               </div>

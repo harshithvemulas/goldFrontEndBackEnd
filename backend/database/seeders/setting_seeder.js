@@ -49,6 +49,11 @@ export default class extends BaseSeeder {
                 value2: '1.5',
             },
             {
+                key: 'investment',
+                value1: 'on',
+                value2: '10',
+            },
+            {
                 key: 'langs',
                 value5: JSON.stringify([
                     {

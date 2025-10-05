@@ -33,7 +33,7 @@ import { TransferReview } from "./_components/transfer-review";
 const formSchema = z.object({
   email: z.string().min(1, "Recipient email is required."),
   amount: z.string().min(1, "Transfer amount is required."),
-  currencyCode: z.string({ required_error: "Currency is required." }),
+  currencyCode: z.string().min(1, "Wallet is required."),
 });
 
 export type TTransferFormData = z.infer<typeof formSchema>;

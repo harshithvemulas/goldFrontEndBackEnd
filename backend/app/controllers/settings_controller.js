@@ -51,6 +51,10 @@ export default class SettingsController {
                     status: this.parseSettings(data, 'electricity_bill')?.value1,
                     fee: Number.parseFloat(this.parseSettings(data, 'electricity_bill')?.value2),
                 },
+                investment: {
+                    status: this.parseSettings(data, 'investment')?.value1,
+                    fee: Number.parseFloat(this.parseSettings(data, 'investment')?.value2),
+                },
                 virtual_card: {
                     status: this.parseSettings(data, 'virtual_card')?.value1,
                 },

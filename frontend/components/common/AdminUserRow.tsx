@@ -23,16 +23,18 @@ function AdminUserRow({ row }: any) {
       className="flex min-w-[80px] items-center gap-2 font-normal text-secondary-text hover:text-foreground"
     >
       <Avatar>
-        <AvatarImage src={row.original.user.customer.profileImage} />
+        <AvatarImage src={row.original?.user?.customer?.profileImage} />
         <AvatarFallback>
-          {getAvatarFallback(row.original.user.customer.name)}
+          {getAvatarFallback(row.original?.user?.customer?.name)}
         </AvatarFallback>
       </Avatar>
 
       <div className="flex-1">
-        <p className="text-sm font-normal">{row.original.user.customer.name}</p>
-        {row.original?.user.email ? (
-          <p className="text-xs font-normal">{row.original?.user.email}</p>
+        <p className="text-sm font-normal">
+          {row.original?.user?.customer?.name}
+        </p>
+        {row.original?.user?.email ? (
+          <p className="text-xs font-normal">{row.original?.user?.email}</p>
         ) : null}
       </div>
     </Link>

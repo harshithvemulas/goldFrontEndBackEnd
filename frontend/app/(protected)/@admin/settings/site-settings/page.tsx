@@ -318,7 +318,7 @@ export default function SiteSettings() {
                       <FormLabel>{t("Site Url")}</FormLabel>
                       <FormControl>
                         <Input
-                          type="text"
+                          type="url"
                           placeholder={t("Enter Site Url")}
                           className="text-base font-normal disabled:cursor-auto disabled:bg-input disabled:opacity-100"
                           {...field}
@@ -337,12 +337,10 @@ export default function SiteSettings() {
                       <FormLabel>{t("API Url")}</FormLabel>
                       <FormControl>
                         <Input
-                          type="email"
-                          disabled
-                          value={field.value}
+                          type="url"
                           placeholder={t("Enter API Url")}
                           className="text-base font-normal disabled:cursor-auto disabled:bg-input disabled:opacity-100"
-                          readOnly
+                          {...field}
                         />
                       </FormControl>
                       <FormMessage />
@@ -496,8 +494,14 @@ export default function SiteSettings() {
                           </SelectTrigger>
                           <SelectContent>
                             {[
-                              { name: "English", code: "en" },
-                              { name: "French", code: "fr" },
+                              { code: "en", name: "English" },
+                              { code: "es", name: "Español" },
+                              { code: "fr", name: "French" },
+                              { code: "de", name: "Deutsch" },
+                              { code: "ru", name: "Russian" },
+                              { code: "pt", name: "Portuguese" },
+                              { code: "cn", name: "Chinese" },
+                              { code: "ar", name: "Arabic" },
                             ]?.map((lang: any) => (
                               <SelectItem key={lang.code} value={lang.code}>
                                 {lang.name}

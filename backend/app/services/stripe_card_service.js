@@ -12,13 +12,13 @@ class StripeCard {
         this.createStripeEnv();
     }
     async createStripeEnv() {
-        const branding = await brandingService();
-        const stripeData = await ExternalPlugin.findByOrFail('value', 'stripe-cards');
-        this.stripe = new stripe(stripeData?.secretKey);
-        this.stripeData = stripeData;
-        const webhooks = await this.stripe.webhookEndpoints.list();
-        const webhookExists = webhooks.data.find((webhook) => webhook.url.includes('/cards/authorize'));
         try {
+            const branding = await brandingService();
+            const stripeData = await ExternalPlugin.findByOrFail('value', 'stripe-cards');
+            this.stripe = new stripe(stripeData?.secretKey);
+            this.stripeData = stripeData;
+            const webhooks = await this.stripe.webhookEndpoints.list();
+            const webhookExists = webhooks.data.find((webhook) => webhook.url.includes('/cards/authorize'));
             if (!webhookExists) {
                 const data = await this.stripe.webhookEndpoints.create({
                     url: branding.apiUrl + '/cards/authorize',

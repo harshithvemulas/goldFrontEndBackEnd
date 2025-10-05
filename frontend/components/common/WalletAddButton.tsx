@@ -66,7 +66,7 @@ export function WalletAddButton({ userWallets }: { userWallets: IWallet[] }) {
         </Button>
       </DrawerTrigger>
 
-      <DrawerContent className="inset-x-auto inset-y-0 bottom-auto left-auto right-0 top-0 m-0 flex h-full w-[90%] flex-col overflow-x-hidden overflow-y-scroll rounded-t-none bg-background px-0 py-8 sm:w-[400px]">
+      <DrawerContent className="inset-x-auto inset-y-0 bottom-auto left-auto right-0 top-0 m-0 flex h-full w-[95%] flex-col overflow-hidden rounded-t-none bg-white px-0 py-8 md:w-[400px]">
         <div className="flex items-center gap-4 px-6">
           <DrawerClose asChild>
             <Button variant="outline" size="icon">
@@ -85,70 +85,72 @@ export function WalletAddButton({ userWallets }: { userWallets: IWallet[] }) {
           </DrawerHeader>
         </div>
 
-        <div className="flex flex-col gap-1 px-3 py-6">
-          <h6 className="mb-6 px-3 font-medium text-secondary-text">
-            {t("Currency Already in Use")}
-          </h6>
-          {userWallets?.map((wallet: IWallet) => (
-            <React.Fragment key={wallet.currency.id}>
-              <div className="inline-flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-accent">
-                <Wallet2 size={32} />
-                <div className="flex-1">
-                  <h6 className="text-foreground">{wallet.currency.name}</h6>
-                  <span className="text-xs text-secondary-text">
-                    {t("Currency")}: {wallet?.currency.code}
-                  </span>
-                </div>
-
-                <Badge variant="success">{t("Added")}</Badge>
-              </div>
-
-              <Separator className="border-divider" />
-            </React.Fragment>
-          ))}
-        </div>
-
-        <Separator />
-
-        <div className="flex flex-col gap-1 px-3 py-6">
-          <h6 className="mb-6 px-3 font-medium text-secondary-text">
-            {t("Available Currency")}
-          </h6>
-          <Case condition={availableCurrency?.length === 0}>
-            <div className="ml-3 flex items-center gap-2 rounded-lg bg-accent py-4 pl-4 text-secondary-text">
-              <ClipboardText />
-              {t("No data...")}
-            </div>
-          </Case>
-
-          <div>
-            <Case condition={availableCurrency?.length > 0}>
-              {availableCurrency?.map((currency: ICurrency) => (
-                <React.Fragment key={currency.id}>
-                  <div className="flex w-full items-center gap-2 rounded-lg px-3 py-2 hover:bg-accent">
-                    <Wallet2 size={32} />
-                    <div className="flex-1">
-                      <h6 className="text-foreground">{currency.name}</h6>
-                      <span className="text-xs text-secondary-text">
-                        {t("Currency")}: {currency.code}
-                      </span>
-                    </div>
-
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="gap-1 hover:bg-background"
-                      onClick={() => handleAddWallet(currency.code)}
-                    >
-                      <Add />
-                      <span>{t("Add")}</span>
-                    </Button>
+        <div className="h-full w-full flex-1 overflow-y-auto">
+          <div className="flex flex-col gap-1 px-3 py-6">
+            <h6 className="mb-6 px-3 font-medium text-secondary-text">
+              {t("Currency Already in Use")}
+            </h6>
+            {userWallets?.map((wallet: IWallet) => (
+              <React.Fragment key={wallet.currency.id}>
+                <div className="inline-flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-accent">
+                  <Wallet2 size={32} />
+                  <div className="flex-1">
+                    <h6 className="text-foreground">{wallet.currency.name}</h6>
+                    <span className="text-xs text-secondary-text">
+                      {t("Currency")}: {wallet?.currency.code}
+                    </span>
                   </div>
 
-                  <Separator className="border-divider" />
-                </React.Fragment>
-              ))}
+                  <Badge variant="success">{t("Added")}</Badge>
+                </div>
+
+                <Separator className="border-divider" />
+              </React.Fragment>
+            ))}
+          </div>
+
+          <Separator />
+
+          <div className="flex flex-col gap-1 px-3 py-6">
+            <h6 className="mb-6 px-3 font-medium text-secondary-text">
+              {t("Available Currency")}
+            </h6>
+            <Case condition={availableCurrency?.length === 0}>
+              <div className="ml-3 flex items-center gap-2 rounded-lg bg-accent py-4 pl-4 text-secondary-text">
+                <ClipboardText />
+                {t("No data...")}
+              </div>
             </Case>
+
+            <div>
+              <Case condition={availableCurrency?.length > 0}>
+                {availableCurrency?.map((currency: ICurrency) => (
+                  <React.Fragment key={currency.id}>
+                    <div className="flex w-full items-center gap-2 rounded-lg px-3 py-2 hover:bg-accent">
+                      <Wallet2 size={32} />
+                      <div className="flex-1">
+                        <h6 className="text-foreground">{currency.name}</h6>
+                        <span className="text-xs text-secondary-text">
+                          {t("Currency")}: {currency.code}
+                        </span>
+                      </div>
+
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="gap-1 hover:bg-background"
+                        onClick={() => handleAddWallet(currency.code)}
+                      >
+                        <Add />
+                        <span>{t("Add")}</span>
+                      </Button>
+                    </div>
+
+                    <Separator className="border-divider" />
+                  </React.Fragment>
+                ))}
+              </Case>
+            </div>
           </div>
         </div>
       </DrawerContent>

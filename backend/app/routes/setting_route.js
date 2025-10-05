@@ -12,8 +12,8 @@ router
 router
     .group(() => {
     router.get('/', [SettingsController, 'adminIndex']);
-    router.post('/', [SettingsController, 'updateSettings']);
-    router.put('/branding', [SettingsController, 'updateBranding']);
+    router.post('/', [SettingsController, 'updateSettings']).use(middleware.demo());
+    router.put('/branding', [SettingsController, 'updateBranding']).use(middleware.demo());
 })
     .prefix('admin/settings')
     .use(middleware.auth({ guards: ['api'] }))
