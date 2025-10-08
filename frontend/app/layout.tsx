@@ -55,7 +55,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${poppins.className} ${poppins.variable} overflow-hidden`}
+  className={`${poppins.className} ${poppins.variable}`}
       >
         <ProgressProvider
           height="3px"

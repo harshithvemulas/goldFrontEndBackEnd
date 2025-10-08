@@ -10,6 +10,7 @@ export const configs = {
 export const PUBLIC_ROUTES = [""];
 
 export const UNAUTHORIZED_ROUTES = [
+  "/",
   "/signin",
   "/signin/2fa",
   "/reset-password",
