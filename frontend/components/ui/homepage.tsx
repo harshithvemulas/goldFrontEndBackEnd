@@ -5,21 +5,18 @@ export default function Homepage() {
   return (
     <div className="min-h-screen bg-[#fff8e1] flex flex-col font-sans">
       {/* Modern Header with Glass Effect - Fixed */}
-      <header className="w-full bg-[#009688]/90 backdrop-blur-lg py-4 px-6 flex items-center justify-between sticky top-0 z-10 shadow-lg">
+  <header className="w-full bg-[#fff8e1] backdrop-blur-lg py-4 px-6 flex items-center justify-between top-0 z-10 shadow-lg border-b-2 border-[#bfa76a]">
         <div className="flex items-center gap-3">
           <img src="/goldpe-logo.svg" alt="GoldPe Logo" className="h-10 w-10 transform hover:scale-105 transition-all duration-300" />
-          <span className="text-2xl font-bold bg-gradient-to-r from-[#bfa76a] to-[#ffffff] bg-clip-text text-transparent tracking-tight">GoldPe</span>
+          <span className="text-2xl font-bold bg-gradient-to-r from-[#bfa76a] to-[#2d1a00] bg-clip-text text-transparent tracking-tight">GoldPe</span>
         </div>
-        <nav className="hidden md:flex gap-10 text-base font-semibold text-white">
-          <a href="#jewellery-exchange" className="hover:text-[#bfa76a] transition-all duration-300">Jewellery Exchange</a>
-          <a href="#for-customers" className="hover:text-[#bfa76a] transition-all duration-300">For Customers</a>
-          <a href="#buy-coins" className="hover:text-[#bfa76a] transition-all duration-300">Buy Coins</a>
-          <a href="#lease" className="hover:text-[#bfa76a] transition-all duration-300">Lease</a>
+        <nav className="hidden md:flex gap-10 text-base font-semibold text-[#2d1a00]">
+         <a href="#lease" className="hover:text-[#bfa76a] transition-all duration-300">Lease</a>
           <a href="#partner" className="hover:text-[#bfa76a] transition-all duration-300">Partner With Us</a>
           <a href="#about" className="hover:text-[#bfa76a] transition-all duration-300">About Us</a>
         </nav>
         <div className="flex gap-3">
-          <a href="/login" className="px-5 py-2 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-[#009688] transition-all duration-300 hover:shadow-md">Login</a>
+          <a href="/login" className="px-5 py-2 rounded-lg border border-[#bfa76a] text-[#2d1a00] font-semibold hover:bg-[#bfa76a] hover:text-white transition-all duration-300 hover:shadow-md">Login</a>
           <a href="/signup" className="px-5 py-2 rounded-lg bg-[#bfa76a] text-white font-semibold shadow-sm hover:shadow-md hover:translate-y-[-1px] transition-all duration-300">Sign Up</a>
         </div>
       </header>
@@ -39,10 +36,6 @@ export default function Homepage() {
             <div className="bg-white/20 backdrop-blur-md rounded-lg px-4 py-2 text-center">
               <span className="text-white/80 text-xs">Silver</span>
               <div className="text-2xl font-bold text-white">₹92/g</div>
-            </div>
-            <div className="bg-white/20 backdrop-blur-md rounded-lg px-4 py-2 text-center">
-              <span className="text-white/80 text-xs">Platinum</span>
-              <div className="text-2xl font-bold text-white">₹3,850/g</div>
             </div>
           </div>
           <a href="#buy" className="px-6 py-2 bg-white text-[#009688] rounded-lg font-semibold hover:bg-gray-100 transition-colors">Buy Now</a>
@@ -140,7 +133,7 @@ export default function Homepage() {
       </section>
 
       {/* Hero Section with Glass Cards - Enhanced Glass Effect */}
-      <section className="container mx-auto max-w-7xl flex flex-col md:flex-row items-stretch justify-center py-24 px-8 gap-12 bg-gradient-to-br from-white/50 to-[#fff8e1]/50">
+      <section className="container mx-auto max-w-7xl flex flex-col md:flex-row items-stretch justify-center py-24 px-8 gap-12 bg-gradient-to-br">
         <div className="flex-1 flex flex-col justify-center items-start py-16 px-12 bg-white/80 backdrop-blur-xl text-[#2d1a00] rounded-3xl shadow-2xl border border-[#bfa76a]/30 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-[#009688]/5 to-[#bfa76a]/5"></div>
           <div className="absolute inset-0 rounded-3xl border-2 border-white/40 pointer-events-none" style={{boxShadow: '0 8px 32px 0 rgba(191,167,106,0.15)'}}></div>
@@ -249,53 +242,52 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* How It Works Section - Enhanced */}
-      <section className="py-20 px-6 bg-white/80 backdrop-blur-xl border-t-4 border-b-4 border-[#bfa76a]/20 relative">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-[#bfa76a]/30 to-[#009688]/20 rounded-full blur-2xl opacity-40"></div>
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-gradient-to-br from-[#009688]/30 to-[#bfa76a]/20 rounded-full blur-2xl opacity-40"></div>
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#009688] mb-4">How GoldPe Works</h2>
-            <p className="text-xl text-[#2d1a00]/80 max-w-2xl mx-auto">Just 4 simple steps to start your gold investment journey</p>
+  <section className="py-20 px-6 bg-white/80 backdrop-blur-xl border-t-4 border-b-4 border-[#bfa76a]/20 relative">
+  <div className="absolute inset-0 pointer-events-none">
+    <div className="absolute top-10 left-10 w-64 h-64 bg-gradient-to-br from-[#bfa76a]/30 to-[#009688]/20 rounded-full blur-2xl opacity-40"></div>
+    <div className="absolute bottom-10 right-10 w-64 h-64 bg-gradient-to-br from-[#009688]/30 to-[#bfa76a]/20 rounded-full blur-2xl opacity-40"></div>
+  </div>
+  <div className="max-w-6xl mx-auto relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-[#009688] mb-4">How GoldPe Works</h2>
+      <p className="text-xl text-[#2d1a00]/80 max-w-2xl mx-auto">Just 4 simple steps to start your gold investment journey</p>
+    </div>
+    <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      {[
+        { icon: '/step1.svg', title: 'Choose Amount', desc: 'Pick your investment in ₹ or grams, starting at ₹10.' },
+        { icon: '/step2.svg', title: 'Secure Payment', desc: 'Pay safely with UPI, cards, or net banking.' },
+        { icon: '/step3.svg', title: 'Gold Stored', desc: 'Gold secured in insured vaults with certificates.' },
+        { icon: '/step4.svg', title: 'Manage Anytime', desc: 'Track, sell, or convert to physical gold 24/7.' },
+      ].map((step, idx) => (
+        <div key={idx} className="flex flex-col items-center text-center flex-1 min-w-[180px] relative">
+          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br flex items-center justify-center mb-6 shadow-xl border-4 border-black/60">
+            <img src={step.icon} alt={step.title} className="w-10 h-10" />
           </div>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-            {[
-              { icon: '/step1.svg', title: 'Choose Amount', desc: 'Select investment amount in ₹ or grams. Start from just ₹10.' },
-              { icon: '/step2.svg', title: 'Secure Payment', desc: 'Pay safely using UPI, cards, net banking or wallets.' },
-              { icon: '/step3.svg', title: 'Gold Stored', desc: 'Your gold is secured in insured vaults with certificates.' },
-              { icon: '/step4.svg', title: 'Manage Anytime', desc: 'Track, sell, convert to physical or earn returns 24/7.' },
-            ].map((step, idx) => (
-              <div key={idx} className="flex flex-col items-center text-center flex-1 min-w-[180px] relative">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#bfa76a] to-[#009688] flex items-center justify-center mb-6 shadow-xl border-4 border-white/60">
-                  <img src={step.icon} alt={step.title} className="w-10 h-10" />
-                </div>
-                <div className="font-bold text-lg text-[#009688] mb-2">{step.title}</div>
-                <div className="text-[#2d1a00]/80 text-base mb-2 max-w-xs">{step.desc}</div>
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 z-0">
-                    <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M0 12 H50 L40 2" stroke="#bfa76a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-16">
-            <a href="#buy" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#009688] to-[#bfa76a] text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-              Start Investing Today
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <div className="font-bold text-lg text-[#009688] mb-2">{step.title}</div>
+          <div className="text-[#2d1a00]/80 text-base mb-2 max-w-xs">{step.desc}</div>
+          {idx < 3 && (
+            <div className="hidden md:block absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 z-0">
+              <svg width="60" height="24" viewBox="0 0 60 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 12 H50 L40 2" stroke="#bfa76a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </a>
-          </div>
+            </div>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
+    <div className="text-center mt-16">
+      <a href="#buy" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-[#009688] to-[#bfa76a] text-white font-bold text-lg shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
+        Start Investing Today
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* Testimonials Section - Added */}
-      <section className="container mx-auto max-w-6xl px-6 py-20 bg-white/50">
+      <section className="container mx-auto max-w-6xl px-6 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#2d1a00] mb-4">What Our Investors Say</h2>
           <p className="text-xl text-gray-600">Join 10 lakh+ happy customers who trust GoldPe</p>
