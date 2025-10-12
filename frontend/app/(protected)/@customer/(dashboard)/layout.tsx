@@ -4,13 +4,10 @@
 import { Case } from "@/components/common/Case";
 import { KycWalletCard } from "@/components/common/KycWalletCard";
 import { WalletCardDashboard } from "@/components/common/WalletCardDashboard";
-import { FavoritesCard } from "@/components/page-components/dashboard/favorites-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerTrigger } from "@/components/ui/drawer";
 import { Skeleton } from "@/components/ui/skeleton";
-import { toggleQuickSendContact } from "@/data/customers/contacts/toggleQuickSend";
-import { useContactList } from "@/data/useContactList";
 import { useAuth } from "@/hooks/useAuth";
 import { useWallets } from "@/hooks/useWallets";
 import axios from "@/lib/axios";
@@ -23,7 +20,6 @@ import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import useSWR from "swr";
 import QuickSendAvatars from "./_components/quick-send-avatar";
-import QuickSendDrawer from "./_components/quick-send-drawer";
 
 export interface QuickContactType {
   id: string | number;
@@ -53,34 +49,13 @@ export default function DashboardLayout({
     mutate: walletMutate,
   } = useWallets();
   const { t } = useTranslation();
-  const {
-    contacts,
-    isLoading: contactsLoading,
-    mutate,
-  } = useContactList(`/contacts?search=${search}`);
+  
 
   const { data: referral } = useSWR("/customers/referred-users", (url) =>
     axios.get(url).then((res) => res.data),
   );
 
-  const handleToggleQuickContact = (
-    id: string | number,
-    type: "add" | "remove",
-  ) => {
-    if (quickContacts(contacts)?.length > 3 && type === "add") {
-      toast.error(t("You already added 4 contact into quick send"));
-      return;
-    }
-    toast.promise(toggleQuickSendContact(id, type), {
-      loading: t("Loading..."),
-      success: (res) => {
-        if (!res?.status) throw new Error(res.message);
-        mutate();
-        return res.message;
-      },
-      error: (err) => err.message,
-    });
-  };
+
 
   return (
     <main className="p-4">
@@ -123,30 +98,6 @@ export default function DashboardLayout({
 
       {/* Table + Side */}
       <div className="flex flex-col gap-4 xl:flex-row">
-        {/* Mobile QuickSend */}
-        <Drawer direction="right">
-          <div className="w-full rounded-xl bg-background p-6 shadow-default md:hidden">
-            <div className="mb-6 flex items-center justify-between">
-              <p className="font-semibold">{t("Quick Send")}</p>
-              <DrawerTrigger>
-                <Button type="button" size="sm" variant="ghost">
-                  <Edit2 size={20} />
-                </Button>
-              </DrawerTrigger>
-            </div>
-            <QuickSendAvatars
-              contacts={contacts}
-              contactsLoading={contactsLoading}
-            />
-          </div>
-          <QuickSendDrawer
-            search={search}
-            setSearch={setSearch}
-            contacts={contacts}
-            contactsLoading={contactsLoading}
-            onToggle={handleToggleQuickContact}
-          />
-        </Drawer>
 
         {/* Table */}
         <div className="flex-1">
@@ -155,32 +106,7 @@ export default function DashboardLayout({
 
         {/* Sidebar */}
         <div className="flex w-full flex-wrap gap-4 md:flex-row xl:max-w-[350px] xl:flex-col">
-          {/* Desktop QuickSend */}
-          <Drawer direction="right">
-            <div className="hidden w-full rounded-xl bg-background p-6 shadow-default md:block">
-              <div className="mb-6 flex items-center justify-between">
-                <p className="font-semibold">{t("Quick Send")}</p>
-                <DrawerTrigger>
-                  <Button type="button" size="sm" variant="ghost">
-                    <Edit2 size={20} />
-                  </Button>
-                </DrawerTrigger>
-              </div>
-              <QuickSendAvatars
-                contacts={contacts}
-                contactsLoading={contactsLoading}
-              />
-            </div>
-            <QuickSendDrawer
-              search={search}
-              setSearch={setSearch}
-              contacts={contacts}
-              contactsLoading={contactsLoading}
-              onToggle={handleToggleQuickContact}
-            />
-          </Drawer>
 
-          <FavoritesCard />
 
           {/* Referral */}
           <div className="w-full rounded-xl bg-background p-6 shadow-default">

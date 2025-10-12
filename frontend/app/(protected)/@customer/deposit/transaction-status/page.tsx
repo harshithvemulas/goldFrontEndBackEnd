@@ -5,7 +5,6 @@ import { DownloadReceipt } from "@/components/common/DownloadReceipt";
 import { Loader } from "@/components/common/Loader";
 import { ReviewItem, ReviewItemList } from "@/components/common/ReviewItems";
 import { TransactionIdRow } from "@/components/common/TransactionIdRow";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -99,15 +98,6 @@ export default function Finish() {
       </h2>
       <Separator orientation="horizontal" className="my-7" />
 
-      <TransferProfileStep
-        className="mb-8"
-        {...{
-          senderName: sender?.label,
-          senderAvatar: imageURL(sender?.image),
-          receiverName: receiver?.label,
-          receiverAvatar: imageURL(receiver?.image),
-        }}
-      />
 
       {/* Deposit details */}
       <ReviewItemList groupName={t("Deposit details")}>

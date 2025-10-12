@@ -1,7 +1,6 @@
 "use client";
 
 import { Loader } from "@/components/common/Loader";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Button } from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import { acceptWithdrawRequest } from "@/data/withdraw/acceptWithdrawRequest";
@@ -88,20 +87,6 @@ export default function WithdrawDetails() {
                 {t("Withdraw")}#{params.withdrawId}
               </h2>
             </div>
-
-            {/* step */}
-            <TransferProfileStep
-              {...{
-                senderAvatar: imageURL(withdraw.from.image),
-                senderName: withdraw.from.label,
-                senderInfo: [withdraw.from?.email, withdraw?.from?.phone],
-
-                receiverAvatar: imageURL(withdraw?.to?.image),
-                receiverName: withdraw?.to?.label,
-                receiverInfo: [withdraw?.to?.email, withdraw?.to?.phone],
-              }}
-              className="px-3 sm:gap-4 sm:px-8"
-            />
 
             <Separator className="mb-1 mt-[5px] bg-border" />
 

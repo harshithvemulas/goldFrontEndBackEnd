@@ -65,27 +65,6 @@ export default function AdminSidenav() {
           ],
         },
         {
-          key: "transfers",
-          name: t("Transfers"),
-          icon: <ArrowRight size="20" />,
-          link: "/transfers",
-          segment: "transfers",
-          children: [
-            {
-              key: "transfers-pending",
-              segment: "transfers",
-              name: t("Pending"),
-              link: "/transfers",
-            },
-            {
-              key: "transfers-history",
-              segment: "transfers-history ",
-              name: t("History"),
-              link: "/transfers/history",
-            },
-          ],
-        },
-        {
           key: "withdraws",
           name: t("Withdraws"),
           icon: <Receive size="20" />,
@@ -105,41 +84,6 @@ export default function AdminSidenav() {
               link: "/withdraws/history",
             },
           ],
-        },
-        {
-          key: "exchanges",
-          name: t("Exchanges"),
-          icon: <Repeat size="20" />,
-          link: "/exchanges",
-          segment: "exchanges",
-          children: [
-            {
-              key: "exchanges-pending",
-              segment: "exchanges",
-              name: t("Pending"),
-              link: "/exchanges",
-            },
-            {
-              key: "exchanges-list",
-              segment: "exchanges-history",
-              name: t("History"),
-              link: "/exchanges/history",
-            },
-          ],
-        },
-        {
-          key: "payments",
-          name: t("Payments"),
-          icon: <ShoppingBag size="20" />,
-          link: "/payments",
-          segment: "payments",
-        },
-        {
-          key: "cards",
-          segment: "cards",
-          name: t("Cards"),
-          icon: <Cards size="20" />,
-          link: "/cards",
         },
         {
           key: "investments",

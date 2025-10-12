@@ -2,7 +2,6 @@
 
 import { Case } from "@/components/common/Case";
 import { Loader } from "@/components/common/Loader";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Button } from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import { changeDepositAdmin } from "@/data/deposit/changeDepositAdmin";
@@ -101,19 +100,6 @@ export default function DepositDetails() {
               </h2>
             </div>
 
-            {/* step */}
-            <TransferProfileStep
-              {...{
-                senderAvatar: imageURL(deposit.from.image),
-                senderName: deposit.from.label,
-                senderInfo: [deposit.from?.email, deposit?.from?.phone],
-
-                receiverAvatar: imageURL(deposit?.to?.image),
-                receiverName: deposit?.to?.label,
-                receiverInfo: [deposit?.to?.email, deposit?.to?.phone],
-              }}
-              className="px-3 sm:gap-4 sm:px-8"
-            />
 
             <Separator className="mb-1 mt-[5px] bg-border" />
 

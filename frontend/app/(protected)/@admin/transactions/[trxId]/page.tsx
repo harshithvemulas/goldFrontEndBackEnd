@@ -2,7 +2,6 @@
 
 import { Case } from "@/components/common/Case";
 import { Loader } from "@/components/common/Loader";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Button } from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import { useSWR } from "@/hooks/useSWR";
@@ -83,19 +82,6 @@ export default function TransactionDetails() {
               </h2>
             </div>
 
-            {/* step */}
-            <TransferProfileStep
-              {...{
-                senderAvatar: imageURL(transaction.from.image),
-                senderName: transaction.from.label,
-                senderInfo: [transaction.from?.email, transaction?.from?.phone],
-
-                receiverAvatar: imageURL(transaction?.to?.image),
-                receiverName: transaction?.to?.label,
-                receiverInfo: [transaction?.to?.email, transaction?.to?.phone],
-              }}
-              className="px-3 sm:gap-4 sm:px-8"
-            />
 
             <Separator className="mb-1 mt-[5px] bg-border" />
 

@@ -5,7 +5,6 @@ import { DownloadReceipt } from "@/components/common/DownloadReceipt";
 import { Loader } from "@/components/common/Loader";
 import { ReviewItem, ReviewItemList } from "@/components/common/ReviewItems";
 import { TransactionIdRow } from "@/components/common/TransactionIdRow";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -23,7 +22,7 @@ import { getAvatarFallback } from "@/utils/getAvatarFallback";
 import { AvatarImage } from "@radix-ui/react-avatar";
 import {
   ArrowRight2,
-  ArrowRotateRight,
+ ArrowRotateRight,
   Danger,
   DocumentCopy,
   Information,
@@ -97,16 +96,7 @@ export default function WithdrawStatus() {
       </h2>
       <Separator orientation="horizontal" className="my-7" />
 
-      {/* Withdraw step */}
-      <TransferProfileStep
-        className="mb-8"
-        {...{
-          senderName: sender?.label,
-          senderAvatar: imageURL(sender?.image),
-          receiverName: receiver?.label,
-          receiverAvatar: imageURL(receiver?.image),
-        }}
-      />
+
 
       {/* Withdraw details */}
       <ReviewItemList groupName={t("Deposit details")}>

@@ -2,7 +2,6 @@
 
 import { Case } from "@/components/common/Case";
 import { Loader } from "@/components/common/Loader";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Button } from "@/components/ui/button";
 import Separator from "@/components/ui/separator";
 import { changeWithdrawAdmin } from "@/data/withdraw/changeWithdrawAdmin";
@@ -112,19 +111,6 @@ export default function WithdrawDetails() {
               </h2>
             </div>
 
-            {/* step */}
-            <TransferProfileStep
-              {...{
-                senderAvatar: imageURL(withdraw.from.image),
-                senderName: withdraw.from.label,
-                senderInfo: [withdraw.from?.email, withdraw?.from?.phone],
-
-                receiverAvatar: imageURL(withdraw?.to?.image),
-                receiverName: withdraw?.to?.label,
-                receiverInfo: [withdraw?.to?.email, withdraw?.to?.phone],
-              }}
-              className="px-3 sm:gap-4 sm:px-8"
-            />
 
             <Separator className="mb-1 mt-[5px] bg-border" />
 

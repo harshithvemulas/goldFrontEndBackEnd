@@ -2,7 +2,6 @@ import { Case } from "@/components/common/Case";
 import { DownloadReceipt } from "@/components/common/DownloadReceipt";
 import { ReviewItem, ReviewItemList } from "@/components/common/ReviewItems";
 import { TransactionIdRow } from "@/components/common/TransactionIdRow";
-import { TransferProfileStep } from "@/components/common/TransferProfileStep";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -66,15 +65,6 @@ export function TransferFinish({
 
       <Separator className="mb-1 mt-[5px] bg-divider" />
 
-      {/* Transfer profile step  */}
-      <TransferProfileStep
-        {...{
-          senderName: data?.from?.label,
-          senderAvatar: imageURL(data?.from?.image),
-          receiverName: data?.to?.label,
-          receiverAvatar: imageURL(data?.to?.image),
-        }}
-      />
 
       {/* Transfer details */}
       <ReviewItemList groupName={t("Deposit details")}>

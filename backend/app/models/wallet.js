@@ -13,7 +13,6 @@ import User from './user.js';
 import { generateUniqueWalletID } from '../utils/generate_unique_id.js';
 import Currency from './currency.js';
 import formatPrecision from '../utils/format_precision.js';
-import Card from './card.js';
 export default class Wallet extends BaseModel {
     static async assignWalletId(wallet) {
         wallet.walletId = await generateUniqueWalletID();
@@ -70,10 +69,6 @@ __decorate([
     belongsTo(() => Currency),
     __metadata("design:type", Object)
 ], Wallet.prototype, "currency", void 0);
-__decorate([
-    hasMany(() => Card),
-    __metadata("design:type", Object)
-], Wallet.prototype, "cards", void 0);
 __decorate([
     beforeCreate(),
     __metadata("design:type", Function),
