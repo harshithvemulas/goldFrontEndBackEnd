@@ -19,7 +19,6 @@ import * as React from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import useSWR from "swr";
-import QuickSendAvatars from "./_components/quick-send-avatar";
 
 export interface QuickContactType {
   id: string | number;
