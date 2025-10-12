@@ -4,6 +4,7 @@ const corsConfig = defineConfig({
     origin: [
         'https://goldpe.app',
         'https://www.goldpe.app',
+        'http://localhost:3000'
     ],    
     methods: ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     headers: true,
