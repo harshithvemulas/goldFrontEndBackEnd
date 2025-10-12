@@ -23,7 +23,6 @@ import Token from './token.js';
 import Address from './address.js';
 import Wallet from './wallet.js';
 import Kyc from './kyc.js';
-import Contact from './contact.js';
 import Transaction from './transaction.js';
 import Save from './save.js';
 import WithdrawMethod from './withdraw_method.js';
@@ -174,14 +173,6 @@ __decorate([
     hasMany(() => Wallet),
     __metadata("design:type", Object)
 ], User.prototype, "wallets", void 0);
-__decorate([
-    hasMany(() => Contact),
-    __metadata("design:type", Object)
-], User.prototype, "contacts", void 0);
-__decorate([
-    hasMany(() => Contact, { foreignKey: 'contactId' }),
-    __metadata("design:type", Object)
-], User.prototype, "contactUsers", void 0);
 __decorate([
     hasMany(() => Transaction),
     __metadata("design:type", Object)
